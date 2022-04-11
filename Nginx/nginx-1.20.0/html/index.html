@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="main"></div>
+  <script>
+    (function send() {
+      const xhr = new XMLHttpRequest()
+      xhr.open('GET', '/api')
+      xhr.send()
+      xhr.onreadystatechange = function () {
+        // xhr.readyState === 4表示响应已完成，此时可以获取并使用服务器的响应。
+        if (xhr.readyState === 4) {
+          document.getElementById('main').innerHTML = xhr.response
+        }
+      }
+    })()
+  </script>
+</body>
+
+</html>
